@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<title>Requisição XMLHttpRequest</title>
+</head>
+<body>
+	<h1>Imagens Aleatórias de Cachorros</h1>
+	<p>A partir do clique no botão abaixo, uma nova imagem aleatória de cachorros será carregada utilizando requisições assíncronas com XMLHttpRequest.</p>
+
+	<img id="img_dog" src="" alt="Aguardando a imagem ser carregada" />
+	<br/>
+	<button onclick="carregarImagens()">Carregar Imagens</button>
+
+	<hr/>
+
+	<h1>Piada Aleatória</h1>
+	<p>Clique no botão abaixo para carregar uma piada aleatória.</p>
+	<p id="joke"></p>
+	<button onclick="carregarPiada()">Carregar Piada</button>
+
+	<script type="text/javascript">
+		function carregarImagens(){
+			var url = "https://dog.ceo/api/breeds/image/random"
+			fetch(url, {
+				method: 'get'
+			})
+			.then(function(response) {
+				response.json().then(function(data){
+					console.log('Resultado da Requisição: ' + data.message);
+
+					var imgDog = document.getElementById("img_dog");
+					imgDog.src = data.message;
+				});
+			})
+			.catch(function(err) {
+				console.error('O seguinte erro ocorreu durante a requisição: ' + err);
+			});
+		}
+
+		function carregarPiada() {
+			var url = "https://v2.jokeapi.dev/joke/Any"
+			fetch(url, {
+				method: 'get'
+			})
+			.then(function(response) {
+				response.json().then(function(data){
+					console.log('Resultado da Requisição: ' + data.joke);
+
+					var jokeElement = document.getElementById("joke");
+					jokeElement.innerHTML = data.joke;
+				});
+			})
+			.catch(function(err) {
+				console.error('O seguinte erro ocorreu durante a requisição: ' + err);
+			});
+		}
+	</script>
+</body>
+</html>

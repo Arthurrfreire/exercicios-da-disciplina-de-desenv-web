@@ -1,0 +1,52 @@
+<!--Caso queria ir além, crie uma calculadora para realizar as quatro operações matemáticas. 
+Nesse caso, você precisará pedir ao usuário que escolha a operação a ser realizada, além dos números de entrada.-->
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<title>Praticando Javascript - Exercício 2</title>
+</head>
+<body>
+       
+</body>
+     
+<script type="text/javascript">
+    
+	var numero1 = prompt("Insira o primeiro número: ");
+	var numero2 = prompt("Insira o segundo número: ");
+	var operacao = prompt("Qual operação você deseja realizar? (Digite + ou - ou * ou /)");
+    
+	var resultadoOperacao = 0;
+		
+	if(operacao === '+')
+		resultadoOperacao = soma(numero1, numero2);
+			
+	if(operacao === '-')
+		resultadoOperacao = diminui(numero1, numero2);
+			
+	if(operacao === '*')
+		resultadoOperacao = multiplica(numero1, numero2);
+			
+	if(operacao === '/')
+		resultadoOperacao = divide(numero1, numero2); 
+			
+	alert('O resultado da operação é igual a: ' + resultadoOperacao);
+		
+	function soma(numero1, numero2){
+		return parseInt(numero1) + parseInt(numero2);
+	}
+		
+	function diminui(numero1, numero2){
+		return parseInt(numero1) - parseInt(numero2);
+	}
+		
+	function multiplica(numero1, numero2){
+		return parseInt(numero1) * parseInt(numero2);
+	}
+		
+	function divide(numero1, numero2){
+		return parseInt(numero1) / parseInt(numero2);
+	}
+</script>
+</html>
